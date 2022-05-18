@@ -1,0 +1,57 @@
+#%RAML 1.0 Trait
+responses:
+  400:
+    body:
+      application/json:
+        example: {
+          "message" : "Bad Request"
+        }
+  401:
+    body:
+      application/json:
+        example: {
+          "message" : "Unauthorized"
+        }
+  403:
+    body:
+      application/json:
+        example: {
+          "message" : "Forbidden"
+        }      
+  404 :
+    body:
+      application/json:
+        example: {
+          "message" : "Not found"
+        }
+  405 :
+    body:
+      application/json:
+        example: {
+          "message" : "Method not allowed"
+        }
+  406 :
+    body:
+      application/json:
+        example: {
+          "message" : "Not acceptable"
+        }
+  415 :
+    body:
+      application/json:
+        example: {
+          "message" : "Unsupported media type"
+        }                  
+  500 :
+    body:
+      application/json:
+        example: {
+          "message" : "Internal server error"
+        }
+  503 :
+    body:
+      application/json:
+        example: {
+          "message" : "Service Unavailable"
+        }      
+        

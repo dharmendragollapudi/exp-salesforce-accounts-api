@@ -1,0 +1,23 @@
+{
+  "details": [
+    {
+      "accountNumber": "01234",
+      "result": "SUCCESS",
+      "status": "OPEN",
+      "dateClosed": "2022-05-01T00:00:00.000Z",
+      "balance": 100.2
+    },
+    {
+      "accountNumber": "462665",
+      "status": "CLOSED",
+      "result": "SUCCESS",
+      "dateClosed": "2022-05-01T00:00:00.000Z",
+      "balance": 100.2
+    },
+    {
+      "accountNumber": "983565",
+      "result": "FAILURE",
+      "message": "Not Authorized"
+    }
+  ]
+}

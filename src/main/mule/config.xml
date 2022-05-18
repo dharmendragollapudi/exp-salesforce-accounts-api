@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+	
+		
+	 <http:listener-config name="exp-salesforce-accounts-api-httpListenerConfig">
+        <http:listener-connection host="${http.listener.host}" port="${http.listener.port}" />
+    </http:listener-config>
+    <apikit:config name="exp-salesforce-accounts-api-config" api="exp-salesforce-accounts-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+	<configuration doc:name="Configuration" doc:id="20e11364-3efd-449a-a305-f193bac53ca4" defaultErrorHandler-ref="global-error-handler" />
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="f3be4d86-1271-4af0-bb39-06198800d90d" >
+		<http:request-connection protocol="HTTPS" host="${http.proc.host}" usePersistentConnections="false" port="${http.proc.port}"/>
+	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="fafce6ac-db56-49f1-9972-16f2345a1948" file="config/${env}.api.config.properties" />
+	<configuration-properties doc:name="Configuration properties" doc:id="d39a70ca-2fdd-4836-a873-6b0e6e5b8018" file="common.api.config.properties" />
+	<api-gateway:autodiscovery apiId="${api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="8295a6ca-8ec9-45b5-b20a-7f715bb0a39b" flowRef="exp-salesforce-accounts-api-main" />
+
+</mule>
